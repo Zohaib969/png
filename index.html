@@ -1,0 +1,246 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PNGDevil offers a wide range of transparent background PNG images for designers. Download high-quality PNG images for free.">
+    <title>PNGDevil - Transparent Background PNG Images for Designers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            color: #1a73e8;
+        }
+        h1 {
+            font-size: 24px;
+            color: #1a73e8;
+            margin: 20px 0;
+        }
+        .search-bar {
+            margin: 20px 0;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .image-item {
+            width: 30%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+        .image-item:hover {
+            transform: scale(1.05);
+        }
+        .image-item img {
+            width: 100%;
+            height: auto;
+        }
+        .image-description {
+            padding: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .image-details {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+        .image-details i {
+            margin-right: 5px;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        .dark-mode h1 {
+            color: #fff;
+        }
+        .dark-mode .image-item {
+            background-color: #444;
+        }
+        .dark-mode .image-description {
+            color: #ccc;
+        }
+        .dark-mode .image-details {
+            color: #aaa;
+        }
+        .toggle-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .toggle-switch input {
+            display: none;
+        }
+        .toggle-switch label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 52px;
+            height: 27px;
+            background: grey;
+            display: block;
+            border-radius: 100px;
+            position: relative;
+        }
+        .toggle-switch label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 23px;
+            height: 23px;
+            background: #fff;
+            border-radius: 90px;
+            transition: 0.3s;
+        }
+        .toggle-switch input:checked + label {
+            background: #1a73e8;
+        }
+        .toggle-switch input:checked + label:after {
+            left: calc(100% - 2px);
+            transform: translateX(-100%);
+        }
+        @media (max-width: 768px) {
+            .image-item {
+                width: 45%;
+            }
+        }
+        @media (max-width: 480px) {
+            .image-item {
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="toggle-switch">
+        <input id="switch" type="checkbox"/>
+        <label for="switch">Toggle</label>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">PNGDevil</div>
+        </div>
+        <h1>Transparent background png images for designers</h1>
+        <div class="search-bar">
+            <input id="search" onkeyup="searchImages()" placeholder="Search images..." type="text"/>
+        </div>
+        <div class="image-grid" id="imageGrid"></div>
+    </div>
+    <script>
+        const switchToggle = document.getElementById('switch');
+        const body = document.body;
+
+        switchToggle.addEventListener('change', () => {
+            body.classList.toggle('dark-mode');
+        });
+
+        const images = [
+            "Default_Foreground_flower_gardens_and_meadows_1.png",
+            "Default_Hand_holding_a_loud_speaker_megaphone_3.png",
+            "Default_Pearly_Gates_with_clouds_and_Heaven_0 (1).png",
+            "Default_Pearly_Gates_with_clouds_and_Heaven_1 (2).png",
+            "Default_Pearly_Gates_with_clouds_and_Heaven_2 (2).png",
+            "Default_Pearly_Gates_with_clouds_and_Heaven_3 (2).png",
+            "Default_Pearly_Gates_with_clouds_and_Heaven_3 (3).png",
+            "Default_Pile_of_garbage_trash_1 (4).png",
+            "Default_Pile_of_garbage_trash_2 (2).png",
+            "Default_Pile_of_garbage_trash_2 (3).png",
+            "Default_Towel_0 (1).png",
+            "Default_Towel_0.png",
+            "Default_Towel_1.png",
+            "Default_Towel_2 (2).png",
+            "Default_Towel_2.png",
+            "Default_Towel_3 (1).png",
+            "Default_Towel_3.png",
+            "Default_Water_bottle_0 (1).png",
+            "Default_Water_bottle_0.png",
+            "Default_Water_bottle_3 (1).png"
+        ];
+
+        const imageGrid = document.getElementById('imageGrid');
+
+        images.forEach(image => {
+            const imageItem = document.createElement('div');
+            imageItem.className = 'image-item';
+            imageItem.innerHTML = `
+                <a href="download.html?image=png/${image}" download>
+                    <img src="png/${image}" alt="${image.replace(/_/g, ' ').replace(/\.png$/, '')}">
+                </a>
+                <div class="image-description">${image.replace(/_/g, ' ').replace(/\.png$/, '')}</div>
+                <div class="image-details">
+                    <div><i class="fas fa-expand"></i> 1000x1000px</div>
+                    <div><i class="fas fa-file"></i> 500KB</div>
+                </div>
+            `;
+            imageGrid.appendChild(imageItem);
+        });
+
+        function searchImages() {
+            const input = document.getElementById('search');
+            const filter = input.value.toLowerCase();
+            const imageItems = imageGrid.getElementsByClassName('image-item');
+
+            for (let i = 0; i < imageItems.length; i++) {
+                const description = imageItems[i].getElementsByClassName('image-description')[0];
+                if (description.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                    imageItems[i].style.display = "";
+                } else {
+                    imageItems[i].style.display = "none";
+                }
+            }
+        }
+          // Check localStorage for dark mode state on page load
+          const savedTheme = localStorage.getItem('dark-mode');
+        if (savedTheme === 'enabled') {
+            body.classList.add('dark-mode');
+            switchToggle.checked = true; // Ensure the toggle reflects the correct state
+        }
+
+        switchToggle.addEventListener('change', () => {
+            if (switchToggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('dark-mode', 'enabled'); // Save the state
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('dark-mode', 'disabled'); // Save the state
+            }
+        });
+
+        // Rest of your existing JavaScript
+    </script>
+</body>
+</html>
